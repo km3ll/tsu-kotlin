@@ -22,6 +22,11 @@ fun main(args: Array<String>) {
     /**
      * String Templates ${}
      */
-    println(" > Hello, $name!")
-    println(" > Hello, ${args.getOrNull(0)}")
+    println(" > ${greeting()}, $name!")
+    println(" > ${greeting()}, ${args.getOrNull(0)}")
+}
+
+fun greeting(): String {
+    println(" > Getting greeting...")
+    return "Hello"
 }
