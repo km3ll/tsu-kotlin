@@ -45,7 +45,6 @@ fun main() {
     val inLetters = 'k' in letters
     println("   > inLetters: $inLetters")
 
-
 }
 
 fun isLetter(c: Char): Boolean {
