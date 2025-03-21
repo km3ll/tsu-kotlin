@@ -1,7 +1,6 @@
 package tsu.pod.bootcamp.m2_starting
 
 fun main() {
-
     println("Variables")
     /**
      * Variables
@@ -29,5 +28,4 @@ fun main() {
     val readOnlyList = listOf("Rust")
     // readOnlyList.add("Kotlin") Error: unresolved reference
     println(" > languages: $readOnlyList")
-
 }
