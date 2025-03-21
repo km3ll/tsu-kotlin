@@ -8,7 +8,7 @@ fun main() {
     var i: Int = 1
     while (i <= 3) {
         println(" > $i")
-        i = i+1
+        i = i + 1
     }
 
     // do-while
@@ -28,11 +28,12 @@ fun main() {
 
     // Iterating over a map
     println(" > Map")
-    val map: Map<Int, String> = mapOf(
-        1 to "one",
-        2 to "two",
-        3 to "three"
-    )
+    val map: Map<Int, String> =
+        mapOf(
+            1 to "one",
+            2 to "two",
+            3 to "three",
+        )
     for ((key, value) in map) {
         println(" > [key: $key, value: $value]")
     }
@@ -67,5 +68,4 @@ fun main() {
     for (ch in "Hello") {
         println(" > $ch")
     }
-
 }

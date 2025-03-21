@@ -39,7 +39,6 @@ fun main() {
         is Circle -> println(" > circle")
         else -> println(" > invalid $shape3")
     }
-
 }
 
 enum class Status {
@@ -69,25 +68,28 @@ enum class Colore {
     GREEN,
     VIOLET,
     ORANGE,
-    INDIGO
+    INDIGO,
 }
 
-fun mix(c1: Colore, c2: Colore) =
-    when (setOf(c1, c2)) {
-        setOf(RED, YELLOW) -> ORANGE
-        setOf(YELLOW, BLUE) -> GREEN
-        setOf(BLUE, VIOLET) -> INDIGO
-        else -> throw Exception("Invalid color")
-    }
-
+fun mix(
+    c1: Colore,
+    c2: Colore,
+) = when (setOf(c1, c2)) {
+    setOf(RED, YELLOW) -> ORANGE
+    setOf(YELLOW, BLUE) -> GREEN
+    setOf(BLUE, VIOLET) -> INDIGO
+    else -> throw Exception("Invalid color")
+}
 
 open class Shape {
     open fun display() {
         println("Shape")
     }
 }
-class Circle(): Shape()
-class Rectangle(): Shape()
+
+class Circle : Shape()
+
+class Rectangle : Shape()
 
 fun check(shape: Shape): String =
     when (shape) {
@@ -96,9 +98,7 @@ fun check(shape: Shape): String =
         else -> throw Exception("Invalid shape")
     }
 
-fun getFavouriteShape(): Shape {
-    return Circle()
-}
+fun getFavouriteShape(): Shape = Circle()
 
 fun checkWeather(degrees: Int): String =
     when {
