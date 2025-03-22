@@ -1,7 +1,6 @@
 package tsu.pod.bootcamp.m2_starting
 
 fun main() {
-
     println("Extension Examples")
 
     /**
@@ -20,14 +19,15 @@ fun main() {
 
     println(" > Examples")
 
-    val joined = listOf('f','e','r','r','i','s')
-        .joinToString(separator = " ", prefix = "[", postfix = "]")
+    val joined =
+        listOf('f', 'e', 'r', 'r', 'i', 's')
+            .joinToString(separator = " ", prefix = "[", postfix = "]")
     println("   > joinToString: $joined")
 
-    val res1 = arrayOf(1,2,3,4).getOrNull(10)
+    val res1 = arrayOf(1, 2, 3, 4).getOrNull(10)
     println("   > array.getOrNull: $res1")
 
-    val res2 = listOf(1,2,3,4).getOrNull(10)
+    val res2 = listOf(1, 2, 3, 4).getOrNull(10)
     println("   > list.getOrNull: $res2")
 
     val res3 = listOf("One", "Two", "Three").withIndex()
@@ -48,16 +48,18 @@ fun main() {
     val res5: Boolean = '%'.isDigit()
     println("   > isDigit: $res5")
 
-    val res6: String = """
-    To code,
-    or not to code?
-    """.trimIndent()
+    val res6: String =
+        """
+        To code,
+        or not to code?
+        """.trimIndent()
     println("   > multiLine > trimIndent: $res6")
 
-    val res7: String = """
+    val res7: String =
+        """
     To code,
     #or not to code?
-    """.trimMargin( marginPrefix = "#" )
+    """.trimMargin(marginPrefix = "#")
     println("   > multiLine > trimMargin: $res7")
 
     val regex1: Regex = "\\d{2}\\.\\d{2}\\.\\d{4}".toRegex()
@@ -71,18 +73,20 @@ fun main() {
     val res10 = "1100".toInt()
     println("   > toInt: $res10")
 
-    //val res11 = "x".toInt() # NumberFormatException
+    // val res11 = "x".toInt() # NumberFormatException
     val res11 = "x".toIntOrNull()
     println("   > toIntOrNull: $res11")
 
     val res12 = getAnswer() eq 42
     println("   > eq: $res12")
-
 }
 
 infix fun <T> T.eq(other: T) {
-    if (this == other) println("OK")
-    else println("Error: $this != $other")
+    if (this == other) {
+        println("OK")
+    } else {
+        println("Error: $this != $other")
+    }
 }
 
 fun getAnswer(): Int = 42

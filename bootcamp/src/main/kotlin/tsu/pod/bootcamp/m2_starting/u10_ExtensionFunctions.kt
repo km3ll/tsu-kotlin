@@ -30,16 +30,12 @@ fun main() {
  */
 class Item(
     val id: Int,
-    val name: String
+    val name: String,
 )
 
-fun String.lastChar(): Char {
-    return this.get(this.length - 1)
-}
+fun String.lastChar(): Char = this.get(this.length - 1)
 
 /**
  * 'this.' notation can be omitted
  */
-fun Item.toJson(): String {
-    return "{\"id\":$id,\"name\":\"$name\"}"
-}
+fun Item.toJson(): String = "{\"id\":$id,\"name\":\"$name\"}"
