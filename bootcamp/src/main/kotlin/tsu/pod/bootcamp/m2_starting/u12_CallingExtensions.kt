@@ -16,8 +16,10 @@ fun main() {
 }
 
 open class Parent
-class Child: Parent()
+
+class Child : Parent()
 
 // Extension functions
 fun Parent.greet() = "parent"
+
 fun Child.greet() = "child"
