@@ -1,4 +1,4 @@
-package tsu.pod.bootcamp.m3_nullability_fpp
+package tsu.pod.bootcamp.m3_nullability_fp
 
 fun main() {
 
