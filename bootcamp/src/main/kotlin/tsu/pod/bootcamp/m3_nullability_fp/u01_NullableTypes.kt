@@ -1,7 +1,6 @@
 package tsu.pod.bootcamp.m3_nullability_fp
 
 fun main() {
-
     println("Nullable Types")
 
     /**
@@ -50,7 +49,6 @@ fun main() {
      * - We can't pass null whenever non-nullable type is expected
      *   printName(null)
      */
-
 }
 
 fun printName(name: String) {

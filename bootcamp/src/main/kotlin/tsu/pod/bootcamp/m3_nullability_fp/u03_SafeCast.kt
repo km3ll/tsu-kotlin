@@ -21,5 +21,4 @@ fun main() {
     val any2: Any = "Wick"
     val lastName = (any2 as? String)?.uppercase()
     println(" > lastName: $lastName")
-
 }

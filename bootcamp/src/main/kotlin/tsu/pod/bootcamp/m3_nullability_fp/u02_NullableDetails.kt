@@ -1,7 +1,6 @@
 package tsu.pod.bootcamp.m3_nullability_fp
 
 fun main() {
-
     println("Nullable Details")
 
     /**
@@ -19,5 +18,4 @@ fun main() {
     // Nullable list of Ints
     val list2: List<Int>? = null
     println(" > list: $list2")
-
 }
