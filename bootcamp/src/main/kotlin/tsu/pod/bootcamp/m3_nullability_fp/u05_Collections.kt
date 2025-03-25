@@ -108,6 +108,9 @@ fun main() {
             .take(2)
             .flatMap { it.toCharArray().toList() }
     res8.forEach { println("   $it") }
+
+    println(" > maxBy")
+    println("   ${students.maxBy { it.age }.name}")
 }
 
 data class Student(
