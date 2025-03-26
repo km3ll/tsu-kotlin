@@ -1,7 +1,6 @@
 package tsu.pod.bootcamp.m3_nullability_fp
 
 fun main() {
-
     println("Function Types")
 
     val sum: (Int, Int) -> Int = { x: Int, y: Int -> x + y }
@@ -49,5 +48,4 @@ fun main() {
     }
     // safe access
     lambda2?.invoke()
-
 }
