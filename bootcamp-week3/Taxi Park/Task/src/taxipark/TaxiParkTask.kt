@@ -1,5 +1,7 @@
 package taxipark
 
+import kotlin.math.roundToInt
+
 /*
  * Task #1. Find all the drivers who performed no trips.
  */
@@ -111,5 +113,38 @@ fun TaxiPark.findTheMostFrequentTripDurationPeriod(): IntRange? {
  * Check whether 20% of the drivers contribute 80% of the income.
  */
 fun TaxiPark.checkParetoPrinciple(): Boolean {
+
+    // Income
+    val incomeTotal: Double = trips.map { it.cost }.sum()
+    val income80 = incomeTotal * 0.8
+    if (incomeTotal == 0.0) return false
+    println("incomeTotal: $incomeTotal")
+    println("income80   : $income80")
+    println("")
+
+    // Drivers and trips total
+    val driversAndTripsTotalSorted: List<Pair<Driver, Double>> = trips
+        .map { trip -> trip.driver to trip.cost }
+        .groupBy { it.first }
+        .map { entry ->
+            Pair(entry.key, entry.value.map { it.second }.sum() )
+        }
+        .sortedByDescending { it.second }
+
+    val driversTotal = driversAndTripsTotalSorted.size
+    val drivers20 = driversTotal * 0.2
+    val rounded20 = if (drivers20.roundToInt() > 0) drivers20.roundToInt() else 1
+    println("Drivers total: $driversTotal")
+    println("Drivers 20%  : $drivers20")
+    println("Drivers 20R  : $rounded20")
+    println("")
+
+    println("driversAndTripsTotalSorted")
+    driversAndTripsTotalSorted.forEach{ entry ->
+        val percentage = (entry.second / incomeTotal) * 100
+        println("driver: ${entry.first}, cost: ${entry.second}, percentage: $percentage")
+    }
+    println("")
+
     return true
 }

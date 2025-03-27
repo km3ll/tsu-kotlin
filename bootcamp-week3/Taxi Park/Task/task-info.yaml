@@ -6,7 +6,7 @@ files:
   - name: src/taxipark/TaxiParkTask.kt
     visible: true
     placeholders:
-      - offset: 299
+      - offset: 330
         length: 1
         placeholder_text: TODO()
         initial_state:
@@ -15,7 +15,7 @@ files:
         initialized_from_dependency: false
         selected: false
         status: Unchecked
-      - offset: 700
+      - offset: 731
         length: 0
         placeholder_text: TODO()
         initial_state:
@@ -24,7 +24,7 @@ files:
         initialized_from_dependency: false
         selected: true
         status: Unchecked
-      - offset: 1295
+      - offset: 1326
         length: 0
         placeholder_text: TODO()
         initial_state:
@@ -33,7 +33,7 @@ files:
         initialized_from_dependency: false
         selected: false
         status: Unchecked
-      - offset: 2193
+      - offset: 2224
         length: 0
         placeholder_text: TODO()
         initial_state:
@@ -42,7 +42,7 @@ files:
         initialized_from_dependency: false
         selected: false
         status: Unchecked
-      - offset: 3311
+      - offset: 3342
         length: 0
         placeholder_text: TODO()
         initial_state:
@@ -51,14 +51,14 @@ files:
         initialized_from_dependency: false
         selected: true
         status: Unchecked
-      - offset: 3452
-        length: 11
+      - offset: 4634
+        length: 4
         placeholder_text: TODO()
         initial_state:
           length: 6
           offset: 1075
         initialized_from_dependency: false
-        selected: false
+        selected: true
         status: Unchecked
     learner_created: false
   - name: test/taxipark/TaxiParkTestUtil.kt
