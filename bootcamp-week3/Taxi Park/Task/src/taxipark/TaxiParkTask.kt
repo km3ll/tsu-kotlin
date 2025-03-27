@@ -17,9 +17,10 @@ fun TaxiPark.findFaithfulPassengers(minTrips: Int): Set<Passenger> {
     fun countTrips(passenger: Passenger): Int {
         return trips.count { trip -> trip.passengers.contains(passenger) }
     }
-    return allPassengers.filter { passenger ->
-        countTrips(passenger) >= minTrips
-    }.toSet() }
+    return allPassengers
+        .filter { passenger ->  countTrips(passenger) >= minTrips }
+        .toSet()
+}
 
 /*
  * Task #3. Find all the passengers, who were taken by a given driver more than once.
