@@ -24,7 +24,7 @@ files:
         initialized_from_dependency: false
         selected: true
         status: Unchecked
-      - offset: 886
+      - offset: 1117
         length: 0
         placeholder_text: TODO()
         initial_state:
@@ -33,7 +33,7 @@ files:
         initialized_from_dependency: false
         selected: false
         status: Unchecked
-      - offset: 1048
+      - offset: 1279
         length: 0
         placeholder_text: TODO()
         initial_state:
@@ -42,7 +42,7 @@ files:
         initialized_from_dependency: false
         selected: false
         status: Unchecked
-      - offset: 1323
+      - offset: 1554
         length: 4
         placeholder_text: TODO()
         initial_state:
@@ -51,7 +51,7 @@ files:
         initialized_from_dependency: false
         selected: true
         status: Unchecked
-      - offset: 1467
+      - offset: 1698
         length: 11
         placeholder_text: TODO()
         initial_state:
