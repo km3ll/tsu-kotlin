@@ -7,15 +7,19 @@ fun TaxiPark.findFakeDrivers(): Set<Driver> {
     fun isFakeDrive(drive: Driver): Boolean {
         return trips.count { trip -> trip.driver == drive } == 0
     }
-    return allDrivers.filter(::isFakeDrive).distinct().toSet()
+    return allDrivers.filter(::isFakeDrive).toSet()
 }
 
 /*
  * Task #2. Find all the clients who completed at least the given number of trips.
  */
 fun TaxiPark.findFaithfulPassengers(minTrips: Int): Set<Passenger> {
-    return setOf()
-}
+    fun countTrips(passenger: Passenger): Int {
+        return trips.count { trip -> trip.passengers.contains(passenger) }
+    }
+    return allPassengers.filter { passenger ->
+        countTrips(passenger) >= minTrips
+    }.toSet() }
 
 /*
  * Task #3. Find all the passengers, who were taken by a given driver more than once.
