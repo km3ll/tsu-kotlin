@@ -26,14 +26,18 @@ fun TaxiPark.findFaithfulPassengers(minTrips: Int): Set<Passenger> {
  * Task #3. Find all the passengers, who were taken by a given driver more than once.
  */
 fun TaxiPark.findFrequentPassengers(driver: Driver): Set<Passenger> {
-    return trips
+    val driverTrips = trips
         .filter { trip -> trip.driver == driver }
+    val driverPassengers = driverTrips
         .map { trip -> trip.passengers.toList() }
         .flatten()
+    val passengersMoreThanOnce = driverPassengers
         .groupBy { it.name }
         .filter { it.value.size > 1 }
+    val uniquePassengers = passengersMoreThanOnce
         .flatMap { it.value }
         .toSet()
+    return uniquePassengers
 }
 
 /*
