@@ -44,7 +44,29 @@ fun TaxiPark.findFrequentPassengers(driver: Driver): Set<Passenger> {
  * Task #4. Find the passengers who had a discount for majority of their trips.
  */
 fun TaxiPark.findSmartPassengers(): Set<Passenger> {
-    return setOf()
+
+    fun hadMassDiscounts(passenger: Passenger, discounts: List<Double?>): Boolean {
+        val (withDiscount, withoutDiscount) = discounts
+            .partition { it != null }
+        return withDiscount.size > withoutDiscount.size
+    }
+
+    val passengerAndDiscounts: List<Pair<Passenger, List<Double?>>> = trips
+        .flatMap { trip ->
+            trip.passengers
+                .toList()
+                .map { passenger -> Pair(passenger, trip.discount) }
+        }
+        .groupBy { it.first }
+        .map { entry -> Pair(entry.key, entry.value.map { it.second }) }
+
+    val passengers = passengerAndDiscounts
+        .filter{ it -> hadMassDiscounts(it.first, it.second) }
+        .map { it.first }
+        .toSet()
+
+    return passengers
+
 }
 
 /*
