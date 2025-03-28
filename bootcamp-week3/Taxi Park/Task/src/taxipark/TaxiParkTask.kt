@@ -1,5 +1,6 @@
 package taxipark
 
+import kotlin.math.ceil
 import kotlin.math.roundToInt
 
 /*
@@ -114,37 +115,25 @@ fun TaxiPark.findTheMostFrequentTripDurationPeriod(): IntRange? {
  */
 fun TaxiPark.checkParetoPrinciple(): Boolean {
 
-    // Income
-    val incomeTotal: Double = trips.map { it.cost }.sum()
-    val income80 = incomeTotal * 0.8
-    if (incomeTotal == 0.0) return false
-    println("incomeTotal: $incomeTotal")
-    println("income80   : $income80")
-    println("")
+    if (trips.isEmpty()) return false
 
-    // Drivers and trips total
-    val driversAndTripsTotalSorted: List<Pair<Driver, Double>> = trips
+    // Drivers
+    val costByDriver: List<Pair<Driver, Double>> = trips
         .map { trip -> trip.driver to trip.cost }
         .groupBy { it.first }
         .map { entry ->
             Pair(entry.key, entry.value.map { it.second }.sum() )
         }
         .sortedByDescending { it.second }
+    costByDriver.forEach { println(it) }
 
-    val driversTotal = driversAndTripsTotalSorted.size
-    val drivers20 = driversTotal * 0.2
-    val rounded20 = if (drivers20.roundToInt() > 0) drivers20.roundToInt() else 1
-    println("Drivers total: $driversTotal")
-    println("Drivers 20%  : $drivers20")
-    println("Drivers 20R  : $rounded20")
-    println("")
+    val totalDrivers = allDrivers.size
+    val twentyPercent = (totalDrivers * 0.2).toInt()
+    val twentyPercentCost = costByDriver.take(twentyPercent).sumOf { it.second }
 
-    println("driversAndTripsTotalSorted")
-    driversAndTripsTotalSorted.forEach{ entry ->
-        val percentage = (entry.second / incomeTotal) * 100
-        println("driver: ${entry.first}, cost: ${entry.second}, percentage: $percentage")
-    }
-    println("")
+    val totalCost: Double = trips.sumOf { it.cost }
+    val eightyPercent: Double = totalCost * 0.8
 
-    return true
+    return twentyPercentCost >= eightyPercent
+
 }
