@@ -90,4 +90,8 @@ files:
     learner_created: false
 feedback_link: https://www.coursera.org/learn/kotlin-for-java-developers/programming/xTPZT/taxi-park/discussions
 status: Unchecked
+feedback:
+  message: "Submission successful, please <a href=\"https://www.coursera.org/learn/kotlin-for-java-developers/programming/xTPZT/taxi-park/submission\"\
+    >check the status on Coursera</a>"
+  time: "Fri, 28 Mar 2025 01:51:12 UTC"
 record: -1
