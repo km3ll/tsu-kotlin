@@ -34,4 +34,6 @@ fun main() {
 
 data class Point(val x: Int, val y: Int)
 
-4
+operator fun Point.plus(other: Point): Point {
+    return Point(x + other.x, y + other.y)
+}
