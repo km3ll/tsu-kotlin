@@ -35,8 +35,6 @@ class SquareBoardImpl(override val width: Int) : SquareBoard {
     }
 
     override fun getRow(i: Int, jRange: IntProgression): List<Cell> {
-        val isReversed = jRange.first >= jRange.last
-        println("isReversed: $isReversed")
         return if (jRange.first >= jRange.last) {
             cells.filter { it.i == i && it.j in jRange}.reversed()
         } else {
@@ -46,9 +44,7 @@ class SquareBoardImpl(override val width: Int) : SquareBoard {
     }
 
     override fun getColumn(iRange: IntProgression, j: Int): List<Cell> {
-        val isReversed = iRange.first >= iRange.last
-        println("isReversed: $isReversed")
-        return if (isReversed) {
+        return if (iRange.first >= iRange.last) {
             cells.filter { it.i in iRange && it.j == j }.reversed()
         } else {
             cells.filter { it.i in iRange && it.j == j }
