@@ -38,4 +38,5 @@ interface GameBoard<T> : SquareBoard {
     fun find(predicate: (T?) -> Boolean): Cell?
     fun any(predicate: (T?) -> Boolean): Boolean
     fun all(predicate: (T?) -> Boolean): Boolean
+
 }
