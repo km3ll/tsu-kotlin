@@ -58,33 +58,22 @@ fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
  */
 fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
 
-    val keyValues: List<Pair<Cell, Int>?> = rowOrColumn.map { cell ->
-        val value: Int? = this.get(cell)
-        val result: Pair<Cell, Int>? =
-            if (value == null) null
-            else Pair(cell, value)
-        result
+    val values: List<Int?> = rowOrColumn.map { cell ->
+        this.get(cell)
     }
 
-    println("--------------------")
-    println("current")
-    keyValues.forEach{pair -> println(pair)}
+    println("==============================")
+    println(" > current")
+    println(" > " + values)
 
-    println("--------------------")
-    println("merged")
-    val merged = keyValues.moveAndMergeEqual { keyValue ->
-        val newValue: Int = keyValue.second + keyValue.second
-        Pair(keyValue.first, newValue)
-    }
-    merged.forEach{pair -> println(pair)}
-
-    println("--------------------")
-    println("updated")
+    val merged = values.moveAndMergeEqual { value -> value + value }
+    println(" > merged")
+    println(" > " + merged)
 
     for (index in 0..rowOrColumn.size-1) {
         if (index <= merged.size-1) {
             val cell = rowOrColumn[index]
-            val value =  merged[index].second
+            val value =  merged[index]
             this.set(cell, value)
         } else {
             val cell = rowOrColumn[index]
@@ -92,15 +81,13 @@ fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
         }
     }
 
-    return keyValues.size != merged.size
+    val valuesMoved = merged.isNotEmpty() && merged.size < values.size
+
+    println(" > moved")
+    println(" > " + valuesMoved)
+    return valuesMoved
 
 }
-
-
-
-
-
-
 
 /*
  * Update the values stored in a board,
@@ -111,27 +98,34 @@ fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
  */
 fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
 
-    fun getRows(): List<List<Cell>> {
+    fun getRows(isReversed: Boolean): List<List<Cell>> {
         val rows = mutableListOf<List<Cell>>()
         for (x in 1..4) {
             val row: List<Cell> = this.getRow(x, 1..4)
-            println("row: $row")
-            rows.add(row)
+            if (isReversed) rows.add(row.reversed())
+            else rows.add(row)
         }
         return rows
     }
 
-    fun getColumns(): List<List<Cell>> {
+    fun getColumns(isReversed: Boolean): List<List<Cell>> {
         val rows = mutableListOf<List<Cell>>()
         for (y in 1..4) {
-            val cells: List<Cell> = this.getAllCells().filter { it.j == y }
-            println("column: $cells")
-            rows.add(cells)
+            val cells: List<Cell> = this.getColumn(1..4, y)
+            if (isReversed) rows.add(cells.reversed())
+            else rows.add(cells)
         }
         return rows
     }
 
-    return true
+    val results: List<Boolean> = when (direction) {
+        Direction.LEFT -> getRows(false)
+        Direction.RIGHT -> getRows(true)
+        Direction.UP -> getColumns(false)
+        Direction.DOWN -> getColumns(true)
+    }.map { cells -> this.moveValuesInRowOrColumn(cells) }
+
+    return results.any { result -> result == true }
 
 }
 

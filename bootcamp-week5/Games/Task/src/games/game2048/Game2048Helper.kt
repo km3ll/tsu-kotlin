@@ -26,6 +26,7 @@ fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> {
                 if (hasNext(index, internal)) {
                         val current = internal[index]
                         val next = internal[index+1]
+                        println("current: $current, next: $next")
                         if (current == next) {
                                 merged.add(merge(current))
                                 index++

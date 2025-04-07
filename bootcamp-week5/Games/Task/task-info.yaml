@@ -40,8 +40,8 @@ files:
         initialized_from_dependency: false
         selected: true
         status: Unchecked
-      - offset: 2870
-        length: 0
+      - offset: 2602
+        length: 1
         placeholder_text: TODO()
         initial_state:
           length: 6
@@ -49,7 +49,7 @@ files:
         initialized_from_dependency: false
         selected: true
         status: Unchecked
-      - offset: 3777
+      - offset: 3893
         length: 0
         placeholder_text: TODO()
         initial_state:
@@ -62,7 +62,7 @@ files:
   - name: src/games/game2048/Game2048Helper.kt
     visible: true
     placeholders:
-      - offset: 1482
+      - offset: 1548
         length: 100
         placeholder_text: TODO()
         initial_state:
