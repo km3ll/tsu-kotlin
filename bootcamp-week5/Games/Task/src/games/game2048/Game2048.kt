@@ -42,7 +42,6 @@ class Game2048(private val initializer: Game2048Initializer<Int>) : Game {
  * Add a new value produced by 'initializer' to a specified cell in a board.
  */
 fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
-
     val newValue: Pair<Cell, Int>? = initializer.nextValue(this)
     if (newValue != null) {
         this.set(newValue.first, newValue.second)
@@ -58,7 +57,7 @@ fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
-    TODO()
+    return true
 }
 
 /*
@@ -69,5 +68,28 @@ fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
-    TODO()
+
+    fun getRows(): List<List<Cell>> {
+        val rows = mutableListOf<List<Cell>>()
+        for (x in 1..4) {
+            val cells: List<Cell> = this.getAllCells().filter { it.i == x }
+            println("row: $cells")
+            rows.add(cells)
+        }
+        return rows
+    }
+
+    fun getColumns(): List<List<Cell>> {
+        val rows = mutableListOf<List<Cell>>()
+        for (y in 1..4) {
+            val cells: List<Cell> = this.getAllCells().filter { it.j == y }
+            println("column: $cells")
+            rows.add(cells)
+        }
+        return rows
+    }
+
+    return true
+
 }
+

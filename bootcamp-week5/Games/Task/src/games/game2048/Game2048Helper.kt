@@ -17,6 +17,30 @@ package games.game2048
  *
  * You can find more examples in 'TestGame2048Helper'.
 */
-fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> =
-        TODO()
+fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> {
+        var merged = mutableListOf<T>()
+        var internal = mutableListOf<T>()
+        internal.addAll(this.filterNotNull())
+        var index = 0
+        while(index <= internal.size - 1) {
+                if (hasNext(index, internal)) {
+                        val current = internal[index]
+                        val next = internal[index+1]
+                        if (current == next) {
+                                merged.add(merge(current))
+                                index++
+                        } else {
+                                merged.add(current)
+                        }
+                } else {
+                        merged.add(internal[index])
+                }
+                index++
+        }
+        return merged
+}
 
+
+fun <T> hasNext(index: Int, internal: List<T>): Boolean {
+        return index < internal.size - 1
+}
