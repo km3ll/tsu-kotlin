@@ -31,8 +31,8 @@ files:
   - name: src/games/game2048/Game2048.kt
     visible: true
     placeholders:
-      - offset: 1221
-        length: 6
+      - offset: 1366
+        length: 0
         placeholder_text: TODO()
         initial_state:
           length: 6
@@ -40,7 +40,7 @@ files:
         initialized_from_dependency: false
         selected: true
         status: Unchecked
-      - offset: 1699
+      - offset: 1838
         length: 6
         placeholder_text: TODO()
         initial_state:
@@ -49,7 +49,7 @@ files:
         initialized_from_dependency: false
         selected: false
         status: Unchecked
-      - offset: 2046
+      - offset: 2185
         length: 6
         placeholder_text: TODO()
         initial_state:
