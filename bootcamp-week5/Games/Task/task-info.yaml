@@ -88,14 +88,14 @@ files:
   - name: src/games/gameOfFifteen/GameOfFifteen.kt
     visible: true
     placeholders:
-      - offset: 385
-        length: 6
+      - offset: 430
+        length: 0
         placeholder_text: TODO()
         initial_state:
           length: 6
           offset: 385
         initialized_from_dependency: false
-        selected: false
+        selected: true
         status: Unchecked
     learner_created: false
   - name: src/games/gameOfFifteen/GameOfFifteenHelper.kt
