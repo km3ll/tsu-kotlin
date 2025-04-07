@@ -12,10 +12,10 @@ import games.game.Game
  *
  * After implementing it you can try to play the game running 'PlayGame2048'.
  */
-fun newGame2048(initializer: Game2048Initializer<Int> = RandomGame2048Initializer): Game =
-        Game2048(initializer)
+fun newGame2048(initializer: Game2048Initializer<Int> = RandomGame2048Initializer): Game = Game2048(initializer)
 
 class Game2048(private val initializer: Game2048Initializer<Int>) : Game {
+
     private val board = createGameBoard<Int?>(4)
 
     override fun initialize() {
@@ -35,6 +35,7 @@ class Game2048(private val initializer: Game2048Initializer<Int>) : Game {
     }
 
     override fun get(i: Int, j: Int): Int? = board.run { get(getCell(i, j)) }
+
 }
 
 /*

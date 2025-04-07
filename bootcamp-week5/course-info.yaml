@@ -6,8 +6,5 @@ summary: Assignment for Week 5 of the Coursera <a href="https://www.coursera.org
 programming_language: Kotlin
 content:
   - Games
-additional_files:
-  - name: build.gradle
-  - name: settings.gradle
 mode: Study
 yaml_version: 2

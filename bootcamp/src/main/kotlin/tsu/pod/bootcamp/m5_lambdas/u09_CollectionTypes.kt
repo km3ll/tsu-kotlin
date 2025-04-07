@@ -16,4 +16,12 @@ fun main() {
      * - read-only interfaces improve API
      */
 
+    data class Person(val name: String, val age: Int)
+
+    val people = listOf(Person("Alice", 30), Person("Bob", 25), Person("Charlie", 35))
+    val names = people.map(Person::name)
+    println(names)
+
+
+
 }
