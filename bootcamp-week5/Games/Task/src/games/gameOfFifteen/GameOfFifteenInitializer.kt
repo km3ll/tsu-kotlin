@@ -19,5 +19,5 @@ class RandomGameInitializer : GameOfFifteenInitializer {
     override val initialPermutation by lazy {
         TODO()
     }
-}
 
+}

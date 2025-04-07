@@ -11,5 +11,18 @@ package games.gameOfFifteen
  * Thus the initial permutation should be correct.
  */
 fun isEven(permutation: List<Int>): Boolean {
-    TODO()
+    println("permutation: $permutation")
+    var counter = 0
+    for (index in permutation.indices) {
+        val remaining: List<Int> = permutation.subList(fromIndex = index+1, toIndex = permutation.size)
+        counter += countInversions(permutation[index], remaining)
+    }
+    return counter % 2 == 0
+}
+
+fun countInversions(value: Int, remaining: List<Int>): Int {
+    println("value: $value, remaining: $remaining")
+    var count = 0
+    remaining.forEach { rem -> if (value > rem) count++ }
+    return count
 }
