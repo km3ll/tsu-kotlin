@@ -40,7 +40,6 @@ fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> {
         return merged
 }
 
-
 fun <T> hasNext(index: Int, internal: List<T>): Boolean {
         return index < internal.size - 1
 }

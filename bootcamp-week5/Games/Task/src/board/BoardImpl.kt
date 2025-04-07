@@ -10,7 +10,6 @@ class SquareBoardImpl(override val width: Int) : SquareBoard {
         for (x in 1..width) {
             for (y in 1..width) {
                 val cell = Cell(i = x, j = y)
-                println("$cell")
                 cells.add(cell)
             }
         }
@@ -75,7 +74,6 @@ class GameBoardImpl<T>(override val width: Int) : GameBoard<T> {
         for (x in 1..width) {
             for (y in 1..width) {
                 val cell = Cell(i = x, j = y)
-                println("$cell")
                 cells.add(cell)
                 values.put(cell, null)
             }

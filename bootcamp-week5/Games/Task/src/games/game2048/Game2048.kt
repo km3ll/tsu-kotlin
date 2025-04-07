@@ -57,8 +57,50 @@ fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
-    return true
+
+    val keyValues: List<Pair<Cell, Int>?> = rowOrColumn.map { cell ->
+        val value: Int? = this.get(cell)
+        val result: Pair<Cell, Int>? =
+            if (value == null) null
+            else Pair(cell, value)
+        result
+    }
+
+    println("--------------------")
+    println("current")
+    keyValues.forEach{pair -> println(pair)}
+
+    println("--------------------")
+    println("merged")
+    val merged = keyValues.moveAndMergeEqual { keyValue ->
+        val newValue: Int = keyValue.second + keyValue.second
+        Pair(keyValue.first, newValue)
+    }
+    merged.forEach{pair -> println(pair)}
+
+    println("--------------------")
+    println("updated")
+
+    for (index in 0..rowOrColumn.size-1) {
+        if (index <= merged.size-1) {
+            val cell = rowOrColumn[index]
+            val value =  merged[index].second
+            this.set(cell, value)
+        } else {
+            val cell = rowOrColumn[index]
+            this.set(cell, null)
+        }
+    }
+
+    return keyValues.size != merged.size
+
 }
+
+
+
+
+
+
 
 /*
  * Update the values stored in a board,
@@ -72,9 +114,9 @@ fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
     fun getRows(): List<List<Cell>> {
         val rows = mutableListOf<List<Cell>>()
         for (x in 1..4) {
-            val cells: List<Cell> = this.getAllCells().filter { it.i == x }
-            println("row: $cells")
-            rows.add(cells)
+            val row: List<Cell> = this.getRow(x, 1..4)
+            println("row: $row")
+            rows.add(row)
         }
         return rows
     }
