@@ -1,10 +1,8 @@
-# app-base
+# bootcamp
 
 ## commands
 
 ```bash
-mvn package
-
 ktlint --format
 ktlint -F
 ```
