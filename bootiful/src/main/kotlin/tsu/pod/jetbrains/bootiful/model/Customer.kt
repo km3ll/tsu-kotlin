@@ -1,4 +1,4 @@
-package tsu.pod.jetbrains.bootiful
+package tsu.pod.jetbrains.bootiful.model
 
 import org.springframework.data.annotation.Id
 
