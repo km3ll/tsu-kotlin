@@ -10,7 +10,6 @@ import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator
 
 @Configuration
 class AppConfig {
-
     @Bean
     fun initializer(connectionFactory: ConnectionFactory): ConnectionFactoryInitializer {
         val initializer = ConnectionFactoryInitializer()
@@ -20,5 +19,4 @@ class AppConfig {
         initializer.setDatabasePopulator(populator)
         return initializer
     }
-
 }

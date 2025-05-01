@@ -3,7 +3,6 @@ package com.example.kotlin.chat.service
 import com.example.kotlin.chat.asDomainObject
 import com.example.kotlin.chat.mapToViewModel
 import com.example.kotlin.chat.repository.MessageRepository
-import org.springframework.context.annotation.Primary
 import org.springframework.stereotype.Service
 
 @Service

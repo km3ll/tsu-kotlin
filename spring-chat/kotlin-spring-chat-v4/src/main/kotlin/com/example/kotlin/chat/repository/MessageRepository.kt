@@ -4,7 +4,6 @@ import org.springframework.data.r2dbc.repository.Query
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.data.repository.query.Param
 
-
 interface MessageRepository : CoroutineCrudRepository<Message, String> {
     // language=SQL
     @Query(
