@@ -3,19 +3,28 @@ package com.example.kotlin.chat.controller
 import com.example.kotlin.chat.service.MessageService
 import com.example.kotlin.chat.service.MessageVM
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/v1/messages")
-class MessageResource(val messageService: MessageService) {
-
+class MessageResource(
+    val messageService: MessageService,
+) {
     @GetMapping
-    fun latest(@RequestParam(value = "lastMessageId", defaultValue = "") lastMessageId: String): ResponseEntity<List<MessageVM>> {
-        val messages = if (lastMessageId.isNotEmpty()) {
-            messageService.after(lastMessageId)
-        } else {
-            messageService.latest()
-        }
+    fun latest(
+        @RequestParam(value = "lastMessageId", defaultValue = "") lastMessageId: String,
+    ): ResponseEntity<List<MessageVM>> {
+        val messages =
+            if (lastMessageId.isNotEmpty()) {
+                messageService.after(lastMessageId)
+            } else {
+                messageService.latest()
+            }
 
         return if (messages.isEmpty()) {
             with(ResponseEntity.noContent()) {
@@ -31,7 +40,9 @@ class MessageResource(val messageService: MessageService) {
     }
 
     @PostMapping
-    fun post(@RequestBody message: MessageVM) {
+    fun post(
+        @RequestBody message: MessageVM,
+    ) {
         messageService.post(message)
     }
 }

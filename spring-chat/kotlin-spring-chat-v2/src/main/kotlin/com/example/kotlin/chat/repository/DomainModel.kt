@@ -11,9 +11,9 @@ data class Message(
     val sent: Instant,
     val username: String,
     val userAvatarImageLink: String,
-    @Id var id: String? = null
+    @Id var id: String? = null,
 )
 
 enum class ContentType {
-    PLAIN
+    PLAIN,
 }

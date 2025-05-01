@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class ChatKotlinApplication
 
 fun main(args: Array<String>) {
-	runApplication<ChatKotlinApplication>(*args)
+    runApplication<ChatKotlinApplication>(*args)
 }

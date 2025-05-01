@@ -8,8 +8,9 @@ import org.springframework.ui.set
 import org.springframework.web.bind.annotation.GetMapping
 
 @Controller
-class HtmlController(val messageService: MessageService) {
-
+class HtmlController(
+    val messageService: MessageService,
+) {
     @GetMapping("/")
     fun index(model: Model): String {
         val messages: List<MessageVM> = messageService.latest()
@@ -19,5 +20,4 @@ class HtmlController(val messageService: MessageService) {
 
         return "chat"
     }
-
 }

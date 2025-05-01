@@ -9,32 +9,33 @@ import java.net.URL
 
 @Service
 @Primary
-class PersistentMessageService(val messageRepository: MessageRepository) : MessageService {
-
-    override fun latest(): List<MessageVM> {
-        return messageRepository
+class PersistentMessageService(
+    val messageRepository: MessageRepository,
+) : MessageService {
+    override fun latest(): List<MessageVM> =
+        messageRepository
             .findLatest()
-            .map { with(it) {
+            .map {
+                with(it) {
                     MessageVM(content, UserVM(username, URL(userAvatarImageLink)), sent, id)
                 }
             }
-    }
 
-    override fun after(messageId: String): List<MessageVM> {
-        return messageRepository
+    override fun after(messageId: String): List<MessageVM> =
+        messageRepository
             .findLatest(messageId)
-            .map { with(it) {
+            .map {
+                with(it) {
                     MessageVM(content, UserVM(username, URL(userAvatarImageLink)), sent, id)
                 }
             }
-    }
 
     override fun post(message: MessageVM) {
         messageRepository
-            .save(with(message) {
-                Message(content, ContentType.PLAIN, sent, user.name, user.avatarImageLink.toString())
-            }
-        )
+            .save(
+                with(message) {
+                    Message(content, ContentType.PLAIN, sent, user.name, user.avatarImageLink.toString())
+                },
+            )
     }
-
 }
