@@ -77,5 +77,4 @@ class LengthCounter {
         counter += word.length
     }
 
-
 }

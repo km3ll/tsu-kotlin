@@ -27,7 +27,7 @@ fun main() {
 
 }
 
-class Activity {
+class   Activity {
 
     // Has to be defined as 'null'
     var events: List<String>? = null
