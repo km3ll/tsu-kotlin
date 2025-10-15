@@ -62,7 +62,7 @@ fun main() {
      * associate
      * - key-value pairs
      */
-    println(" > associated")
+    println(" > associate")
     val res4: Map<Char, Int> =
         digits
             .take(5)
